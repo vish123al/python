@@ -2,15 +2,14 @@ node {
     
   stage 'Checkout'
 
-  git 'https://github.com/Cox-Automotive/jenkins-docker-python-example.git'
+  git 'https://github.com/vish123al/python.git'
         
   stage 'Package Docker image'
 
-  def img = docker.build('coxauto/jenkins-docker-python-example:latest', '.')
+  sh 'docker build -t vishaldenge/py .
 
   stage 'Publish'
-  docker.withRegistry('https://nexus.coxautodev.com', 'nexus-admin') {
-     img.push('latest')
-  }
+    sh "docker login -u vishaldenge -p 'v!sh@l123' "
+  sh 'docker push vishaldenge/py'
 
 }
